@@ -1,0 +1,46 @@
+﻿@model DetailsViewModel
+
+<div class="py-12">
+	<div class="text-center py-8">
+		<div class="text-4xl text-orange-400  font-bold">@Model.Post.Title</div>
+	</div>
+
+	<div class="grid grid-cols-2 gap-32">
+		<div class="pt-32 text-white text-xl">@Model.Post.ShortDescription</div>
+		<div class="">
+			<img class="border  w-full object-cover transition-shadow duration-300 ease-in-out hover:shadow-lg" src="@Model.Post.ImageUrl" width="100%" />
+		</div>
+	</div>
+
+
+	<div class="text-white pt-20 px-40 text-xl">
+		<div>@Html.Raw(@Model.Post.Description)</div>
+	</div>
+</div>
+
+
+<div class="pt-16 text-4xl text-white font-bold">
+	Related Stories
+</div>
+
+<div class="pt-6 pb-12">
+	<div class="py-1 bg-orange-400"></div>
+</div>
+
+
+<div class="grid grid-cols-4 gap-4">
+
+
+	@foreach (var item in Model.Posts)
+	{
+		<div class="">
+			<a asp-action="Details" asp-route-id="@item.Id">  <img class="border h-56 w-full object-cover transition-shadow duration-300 ease-in-out hover:shadow-lg" src="@item.ImageUrl" width="100%" /></a>
+			<div class="flex justify-between py-2">
+				<div class="uppercase">@item.Topic.Name</div>
+				<div class="">@(item.Created.ToShortDateString())</div>
+			</div>
+			<div class="text-white text-xl"><a class="hover:text-orange-500" asp-action="Details" asp-route-id="@item.Id">@item.Title</a></div>
+		</div>
+	}
+
+</div>

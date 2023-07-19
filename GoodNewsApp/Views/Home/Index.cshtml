@@ -1,0 +1,63 @@
+﻿@model PostTopicViewModel
+
+<div class="pt-32 pb-12 px-36">
+	<div class="text-5xl text-white font-bold">The <span class="text-orange-500">#1</span> source for Good News.</div>
+</div>
+
+<div>
+	<partial name="_TopicPartial" />
+</div>
+
+
+<div>
+	<div class="pt-16 text-4xl text-white font-bold">
+		Top Stories
+	</div>
+
+	<div class="pt-6 pb-12">
+		<div class="py-1 bg-orange-400"></div>
+	</div>
+
+	<div class="grid grid-cols-2 gap-10">
+		@foreach (var item in Model.Posts)
+		{
+			if (item.IsFeatured)
+			{
+				<div class="">
+					<a asp-action="Details" asp-route-id="@item.Id" ><img class="border h-96 w-full object-fill transition-shadow duration-300 ease-in-out hover:shadow-lg" src="@item.ImageUrl" width="100%" /></a>
+					<div class="flex justify-between py-2">
+						<div class="uppercase">@item.Topic.Name</div>
+						<div class="">@(item.Created.ToShortDateString())</div>
+					</div>
+					<div class="text-white text-xl"><a class="hover:text-orange-500" asp-action="Details" asp-route-id="@item.Id">@item.Title</a></div>
+				</div>
+			}
+		}
+	</div>
+
+</div>
+
+
+<div class="pt-16 text-4xl text-white font-bold">
+	Latest Stories
+</div>
+
+<div class="pt-6 pb-12">
+	<div class="py-1 bg-orange-400"></div>
+</div>
+
+<div class="grid grid-cols-3 gap-6">
+		
+			@foreach (var item in Model.Posts)
+			{
+				<div class="pb-5">
+			     <a asp-action="Details" asp-route-id="@item.Id" >  <img class="border h-56 w-full object-cover transition-shadow duration-300 ease-in-out hover:shadow-lg" src="@item.ImageUrl" width="100%" /></a>
+				   <div class="flex justify-between py-2">
+				        <div class="uppercase">@item.Topic.Name</div>
+				<div class="">@(item.Created.ToShortDateString())</div>
+				   </div>
+			<div class="text-white text-xl"><a class="hover:text-orange-500" asp-action="Details" asp-route-id="@item.Id">@item.Title</a></div>
+				</div>
+			}
+	
+</div>

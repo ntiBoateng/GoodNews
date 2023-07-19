@@ -1,0 +1,28 @@
+﻿@model List<Post>
+
+<div class=" font-bold text-white py-8 flex justify-center gap-96">
+	<div class="text-2xl">All Posts (<span class="text-orange-300 text-md">Admins only!</span>)</div>
+	<div class="">
+		<a asp-controller="Post" asp-action="Create"> <span class="uppercase text-md bg-gray-700 text-white font-bold border-2 border-gray-400 rounded-md hover:bg-orange-500 hover:text-white py-2 px-4">Add New Content</span></a>
+	</div>
+</div>
+
+<div class="py-4">
+	<table id="tblData" style="width: 100%;" class="row-border stripe cell-border">
+		<thead class="text-md text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+			<tr class="">
+				
+				<th class="">Title</th>
+				<th class="">Short Description</th>
+				<th class="">Topic</th>
+				<th class="">Is Featured</th>
+				<th></th>
+			</tr>
+		</thead>
+
+	</table>
+</div>
+
+@section Scripts{
+	<script src="~/js/post.js" ></script>
+}

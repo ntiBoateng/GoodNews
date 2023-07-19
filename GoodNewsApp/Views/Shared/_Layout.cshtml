@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GoodNewsApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.2.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GoodNewsApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.jqueryui.min.css" />
+</head>
+<body>
+    <header class="sticky top-0 bg-white">
+        <nav class="border-bottom px-32 py-4 flex justify-between ">
+            <div class="flex gap-8">
+                <div>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="https://assets.zyrosite.com/goodnewslqpz6/logo_1-dJo8wLMDM8S6Kvq6.svg" />
+                    </a>
+                </div>
+                <div class="font-bold text-black" style="font-size: 19px; color: black" ><a class="hover:text-orange-500" asp-controller="Post" asp-action="Index">Manage Content</a></div>
+            </div>
+
+            <div class="flex gap-4 font-bolder uppercase" style="font-size: 19px; color: black">
+                <div class="cursor-pointer font-bold" >
+                    <div id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" style="font-size: 19px; color: black" class="hover:text-orange-500 text-black bg-white  focus:ring-4  font-bold rounded-lg text-sm px-5 text-center inline-flex items-center">
+                        Topics <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                        </svg>
+                    </div>
+                  
+                    <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul class="py-2 text-sm text-black" aria-labelledby="dropdownHoverButton">
+                            <li>
+                                <a asp-controller="Home" asp-action="Topic" asp-route-id="1" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activism</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Topic" asp-route-id="2" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Community</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Topic" asp-route-id="3" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Culture</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Topic" asp-route-id="4" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Education</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Topic" asp-route-id="5" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Innovation</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Topic" asp-route-id="6" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sport</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cursor-pointer hover:text-orange-500 hover:underline font-bold active:text-orange-500 active:underline"><a asp-controller="Home" asp-action="About">About</a></div>
+                <div class="hover:text-orange-500 hover:underline font-bold"><a asp-controller="Home" asp-action="Contact">Contact</a></div>
+                <div class="hover:text-orange-500 hover:underline font-bold"><a asp-controller="Post" asp-action="Create">Submit a story</a></div>
+                  
+            </div>
+        </nav>
+    </header>
+    <div class="px-32">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="px-32 pt-8 text-white">
+        <partial name="_FooterPartial" />
+
+   </div>
+    <div class="px-32 pt-8 grid grid-cols-12 text-white text-md gap-2">
+        <div class="col-span-4">Good News empowers the generation of tomorrow for a brighter future and hope for every individual.</div>
+        <div class="col-span-4 px-20">
+            <p class="pb-4 underline"><a asp-controller="Home" asp-action="About">About</a></p>
+            <p class="pb-4 underline"><a asp-controller="Home" asp-action="Contact">Contact</a></p>
+            <p class="pb-2 underline"><a asp-controller="Home" asp-action="About">Submit a story</a> </p>
+        </div>
+        <div class="col-span-4">
+            <p class="pb-4 underline"><a asp-controller="Home" asp-action="About">Terms & Conditions</a></p>
+            <p class="pb-4 underline"><a asp-controller="Home" asp-action="Privacy">Privacy policy</a></p>
+        </div>
+        <div class="col-span-4">
+            <span><i class="fa-brands fa-facebook"></i></span>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.jqueryui.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/nbbjifu57j7wuvc4pffo13m7tph7fpo5tpli7n7dofdmvpbe/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
